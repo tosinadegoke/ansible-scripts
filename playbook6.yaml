@@ -1,0 +1,28 @@
+---
+- name: Experiencing the Variable in the same playbook
+  hosts: all
+  vars:
+   pkg: httpd
+   usr: tosin
+  tasks:
+   - name: Install a Package {{ pkg }} of httpd
+     yum:
+      name: "{{ pkg }}"
+      state: present
+    
+   - name: create a webpage
+     copy:
+      content: "Hi Today we are learning the variable additions in the ansible playbook"
+      dest: /var/www/html/index.html
+    
+   - name: start the service with the package {{ pkg }}
+     service:
+      name: "{{ pkg }}"
+      state: started
+      enabled: true
+    
+   - name: Add a user {{ usr }}
+     user:
+      name: "{{ usr }}"
+      uid: 30002
+      state: present

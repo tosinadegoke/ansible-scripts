@@ -1,0 +1,17 @@
+---
+- name: Declaring the variables in the beginning
+  hosts: all
+  vars:
+   usr:
+   - tom
+   - sawyer
+   - harry
+   - mike
+   - jackson
+  tasks:
+  - name: create multiple user
+    user:
+     name: "{{ item }}"
+     state: present
+    loop: "{{ usr }}"
+

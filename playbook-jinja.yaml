@@ -1,0 +1,9 @@
+---
+- name: collection manage hosts information
+  hosts: all
+  tasks:
+  - name: send jinja info to managed hosts
+    template:
+     src: /home/student/ansible-scripts/jinja.j2
+     dest: /tmp/training
+     mode: 0644

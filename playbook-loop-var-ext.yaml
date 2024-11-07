@@ -1,0 +1,11 @@
+---
+- name: Declaring the variable in the beginning
+  hosts: all
+  vars_files:
+  - /home/student/ansible-scripts/var-loop.yaml
+  tasks:
+  - name: create multiple user
+    user:
+     name: "{{ item }}"
+     state: present
+    loop: "{{ usr }}"
